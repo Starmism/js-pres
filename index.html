@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Story Presentation - Ethan Delany</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>The JavaScript<br />Who's Who<br />In 2024</h2>
+					<img class="r-stretch" src="./media/JavaScript-logo.png" alt="js logo" />
+					<h4>By Ethan Delany</h4>
+				</section>
+				<section>
+					<h2>Basic Timeline</h2>
+					<ul>
+						<li>Knockout.js (2010)</li>
+						<li>Angular.js (2010)</li>
+						<li>React (2013)</li>
+						<li>Vue (2014)</li>
+						<li>Angular (again) (2016)</li>
+						<li>Svelte (2016)</li>
+					</ul>
+				</section>
+
+
+
+				<section>
+					<h2>Knockout.js (2010)</h2>
+					<ul>
+						<li>Kickstarted reactive JavaScript framework development (MVVM).</li>
+						<li>Not widely used today.</li>
+					</ul>
+					<img class="r-stretch" src="https://knockoutjs.com/img/homepage-example.png" alt="knockout" />
+				</section>
+
+				<section>
+					<h2>Angular.js (2010)</h2>
+					<ul>
+						<li>Major step in reactivity and declarative UI.</li>
+						<li>No longer updated (replaced).</li>
+					</ul>
+					<pre><code data-trim>
+						<ul ng-app="myApp" ng-controller="ctrl">
+							<li ng-repeat="x in names | orderBy:'country'">
+								{{ x.name + ", " + x.country | uppercase }}
+							</li>
+						</ul>
+						<script>
+							angular.module('myApp', []).controller('ctrl', function($scope) {
+								$scope.names = [
+									{ name: 'Jani', country: 'Denmark' },
+									{ name: 'Carl', country: 'America' },
+									{ name: 'Margareth', country: 'England' },
+								];
+							});
+						</script>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>React (2013)</h2>
+					<ul>
+						<li>Functional approach, uses JSX for templates.</li>
+						<li>Most popular JS framework by far.</li>
+					</ul>
+					<pre class="jsx"><code data-trim>
+						export default function ListApp() {
+							const names = [
+								{ name: 'Jani', country: 'Denmark' },
+								{ name: 'Carl', country: 'America' },
+								{ name: 'Margareth', country: 'England' },
+							];
+							return (
+								<ul>
+									{names.map((x) => (
+										<li key={x.name}>{x.name}, {x.country.toUpperCase()}</li>
+									))}
+								</ul>
+							);
+						}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Vue (2014)</h2>
+					<ul>
+						<li>Response to React, generally simpler.</li>
+						<li>Tied for second popularity w/ Angular.</li>
+					</ul>
+					<pre class="vue"><code data-trim>
+						<script setup>
+							const names = ref([
+								{ name: 'Jani', country: 'Denmark' },
+								{ name: 'Carl', country: 'America' },
+								{ name: 'Margareth', country: 'England' },
+							]);
+						</script>
+						<template>
+							<ul>
+								<li v-for="x in names">
+									{{ x.name }}, {{ x.country.toUpperCase() }}
+								</li>
+							</ul>
+						</template>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Angular (again) (2016)</h2>
+					<ul>
+						<li>Redo of Angular.js, big swap to TS, opinionated.</li>
+						<li>Tied for second popularity w/ Vue.</li>
+					</ul>
+					<pre class="typescript"><code data-trim>
+						@Component({
+							template: html`<ul>
+											<li *ngFor="let x of namesList">
+												{{x.name}}, {{x.country.toUppercase()}}
+											</li>
+										</ul>`,
+						})
+						export class AppComponent {
+							namesList: Name[] = [
+								new Name('Jani', 'Denmark'),
+								new Name('Carl', 'America'),
+								new Name('Margareth', 'England'),
+							];
+						}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Svelte (2016)</h2>
+					<ul>
+						<li>Newest player, aims for simplicity.</li>
+						<li>Third in popularity.</li>
+					</ul>
+					<pre class="svelte"><code data-trim>
+						<script>
+							const names = [
+								{ name: 'Jani', country: 'Denmark' },
+								{ name: 'Carl', country: 'America' },
+								{ name: 'Margareth', country: 'England' },
+							];
+						</script>
+
+						<ul>
+							{#each names as x}
+								<li>{x.name}, {x.country.toUpperCase()}</li>
+							{/each}
+						</ul>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Good Overview</h2>
+					<p>That covers the primary overview and growth in frontend JavaScript frameworks over the last ~15 years.</p>
+					<p>The main players are still: <em>React, Angular, and Vue</em>.</p>
+				</section>
+
+				<section>
+					<h2>Popularity Chart (2023)</h2>
+					<img class="r-stretch" src="./media/JS-popularity-chart.png" alt="chart" />
+					<p>Credit to the Stack Overflow 2023 Developer Survey</p>
+				</section>
+
+				<section>
+					<h2>Up-And-Comers</h2>
+					<p>Web Development is a very quickly moving space.</p>
+					<p>Now we'll go over some of the most promising up-and-comers.</p>
+					<p>At the end, I will give my recommendation.</p>
+				</section>
+
+
+				<section>
+					<h2>Qwik (2023)</h2>
+					<ul>
+						<li>Uses JSX like React, similar use-style.</li>
+						<li>Uses Resumability instead of Hydration.</li>
+					</ul>
+					<pre class="jsx"><code data-trim>
+						export const List = component$(() => {
+							const names = [
+								{ name: 'Jani', country: 'Denmark' },
+								{ name: 'Carl', country: 'America' },
+								{ name: 'Margareth', country: 'England' },
+							];
+							return (
+								<ul>
+									{names.map((x) => (
+										<li key={x.name}>{x.name}, {x.country.toUpperCase()}</li>
+									))}
+								</ul>
+							);
+						});
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Solid (2023)</h2>
+					<ul>
+						<li>Uses JSX like React, similar use-style.</li>
+						<li>Mainly uses Signals over re-rendering.</li>
+					</ul>
+					<pre class="jsx"><code data-trim>
+						export function List() {
+							const [names, setNames] = createSignal([
+								{ name: 'Jani', country: 'Denmark' },
+								{ name: 'Carl', country: 'America' },
+								{ name: 'Margareth', country: 'England' },
+							]);
+							return (
+								<ul>
+									<For each={names()}>{(x) =>
+										<li>{x.name}, {x.country.toUpperCase()}</li>
+									}</For>
+								</ul>
+							);
+						});
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>HTMX (2020)</h2>
+					<ul>
+						<li>Server-focused, light, works on HTML attributes solely.</li>
+						<li>Great for backend frameworks like Django, RoR, Laravel.</li>
+					</ul>
+					<pre class="html"><code data-trim>
+						<tr id="list">
+						  <td colspan="3">
+							<button hx-get="/contacts/?page=2"
+									hx-target="#list">
+								 Load More Agents... <img class="htmx-indicator" src="bars.svg">
+							</button>
+						  </td>
+						</tr>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Lit (2021)</h2>
+					<ul>
+						<li>Pure JavaScript, makes standard Web Components.</li>
+						<li>Used by Google mostly, and for WC stuff.</li>
+					</ul>
+					<pre class="typescript"><code data-trim>
+						@property() names = [
+							{ name: 'Jani', country: 'Denmark' },
+							{ name: 'Carl', country: 'America' },
+							{ name: 'Margareth', country: 'England' },
+						];
+						render() {
+							return html`<ul>
+								${this.names.map((x) =>
+									html`<li>${x.name}, ${x.country.toUpperCase()}</li>`
+								)}
+							</ul>`;
+						}
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>Astro (2022)</h2>
+					<ul>
+						<li>Content-focused metaframework.</li>
+						<li>Heavily uses Markdown and can mix frameworks.</li>
+					</ul>
+					<pre class="javascript"><code data-trim>
+						---
+						const names = [
+							{ name: 'Jani', country: 'Denmark' },
+							{ name: 'Carl', country: 'America' },
+							{ name: 'Margareth', country: 'England' },
+						];
+						---
+						<ul>
+							{names.map((x) =>
+								<li>{x.name}, {x.country.toUpperCase()}</li>
+							)}
+						</ul>
+					</code></pre>
+				</section>
+
+				<section>
+					<h2>WebAssembly</h2>
+					<ul>
+						<li>Alternative to JavaScript, lets any language run in the browser.</li>
+						<li>Blazor, Yew, are examples.</li>
+					</ul>
+					<pre class="blazor"><code data-trim>
+						<ul>
+							@foreach (Name x in names) {
+								<li>@x.name, @x.country.Upper()</li>
+							}
+						</ul>
+
+						@code {
+							private Name[] names = [
+								new Name('Jani', 'Denmark'),
+								new Name('Carl', 'America'),
+								new Name('Margareth', 'England')
+							];
+						}
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>My Recommendations</h2>
+					<ul>
+						<li>React is the most useful, and will get you the most jobs.</li>
+						<li>Vue is very nice, and used a lot over React so can be good to know.</li>
+						<li>Angular is great for big companies and very opinionated.</li>
+						<li>Svelte is still pretty new and not set-in-stone. (Svelte 5)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Metaframeworks?</h2>
+					<p>Metaframeworks are a big part of choosing a framework as well.</p>
+					<h4>My Recommendations:</h4>
+					<ul>
+						<li>React: Next.js, Remix</li>
+						<li>Vue: Nuxt</li>
+						<li>Angular: Analog</li>
+						<li>Svelte: SvelteKit</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Thanks for watching!</h2>
+					<p>Big thanks to Dr. Nathan Barker for his mentorship.</p>
+					<p>Most examples were hand-crafted by me, the Knockout one is from their website.</p>
+
+					<p>SUU Festival of Excellence 2024</p>
+				</section>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				mouseWheel: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
